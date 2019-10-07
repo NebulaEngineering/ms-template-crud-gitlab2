@@ -1,0 +1,174 @@
+<div class="page-layout blank" fusePerfectScrollbar>
+  <mat-drawer-container class="container" autosize>
+    <div class="sharek">
+      <!-- SIDENAV -->
+      <mat-sidenav #search opened [disableClose]="true" class="sidenav" mode="side">
+
+        <!-- SIDENAV CONTENT -->
+        <div class="content" fusePerfectScrollbar *fuseIfOnDom [@animate]="{ value: '*', params: { y: '50px' } }">
+          <div class="nav search">
+            <form name="form" [formGroup]="filterForm">
+              <div>
+
+                <mat-form-field>
+                  <input matInput placeholder="{{'msnameuppercase.NAME' | translate}}" formControlName="name"
+                    id="name" maxlength="20" />
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput placeholder="{{'msnameuppercase.CREATOR_USER' | translate}}"
+                    formControlName="creatorUser" id="creatorUser" maxlength="20" />
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput [matDatepicker]="pickerCreationDate"
+                    placeholder="{{'msnameuppercase.CREATION_DATE' | translate}}"
+                    formControlName="creationTimestamp" />
+
+                  <mat-datepicker-toggle matSuffix [for]="pickerCreationDate">
+                  </mat-datepicker-toggle>
+
+                  <mat-datepicker [twelveHour]="false" #pickerCreationDate>
+                  </mat-datepicker>
+                </mat-form-field>
+
+              </div>
+            </form>
+
+            <div class="filter-reset">
+              <button mat-raised-button mat-button class="mat-accent compose-dialog-button" aria-label="Filter"
+                (click)="resetFilter()">
+                {{ "msnameuppercase.RESET_FILTER" | translate }}
+              </button>
+            </div>
+
+          </div>
+        </div>
+        <!-- / SIDENAV CONTENT -->
+      </mat-sidenav>
+      <!-- / SIDENAV -->
+
+      <!-- botones principales-->
+      <div class="header" fxLayout="row">
+        <div class="search-wrapper">
+          <button type="button" mat-button (click)="search.toggle()">
+            <mat-icon>compare_arrows</mat-icon>
+          </button>
+        </div>
+
+        <div class="new-button">
+          <button mat-raised-button (click)="goToDetail()">
+            <span>{{ "msnameuppercase.ADD_NEW" | translate }}</span>
+          </button>
+        </div>
+        <!-- botones principales -->
+      </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="center">
+
+      <!-- CONTENT CARD -->
+      <div class="content-card mat-white-bg">
+        <mat-table id="entity-table" class="item-table" #table [dataSource]="dataSource" fusePerfectScrollbar>
+
+          <!-- Name Column -->
+          <ng-container cdkColumnDef="name">
+            <mat-header-cell *cdkHeaderCellDef>
+              <p>{{ "msnameuppercase.NAME" | translate }}</p>
+            </mat-header-cell>
+            <mat-cell *cdkCellDef="let element">
+              <span>{{ "msnameuppercase.NAME" | translate }}</span>
+              <p class="text-truncate">
+                {{ element.generalInfo.name }}
+              </p>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Enabled Column -->
+          <ng-container cdkColumnDef="enabled">
+            <mat-header-cell *cdkHeaderCellDef>
+              <p>{{ "msnameuppercase.ACTIVE" | translate }}</p>
+            </mat-header-cell>
+            <mat-cell *cdkCellDef="let element">
+              <span>{{ "msnameuppercase.ACTIVE" | translate }}</span>
+              <p>
+                <mat-icon *ngIf="element.enabled" class="active-icon mat-green-600-bg s-16">check</mat-icon>
+                <mat-icon *ngIf="!element.enabled" class="active-icon mat-red-500-bg s-16">close</mat-icon>
+              </p>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Creation timestamp Column -->
+          <ng-container cdkColumnDef="creationTimestamp">
+            <mat-header-cell *cdkHeaderCellDef>
+              <p>{{ "msnameuppercase.CREATION_TIMESTAMP" | translate }}</p>
+            </mat-header-cell>
+            <mat-cell *cdkCellDef="let element">
+              <span>{{ "msnameuppercase.CREATION_TIMESTAMP" | translate }}</span>
+              <p class="text-truncate">
+                {{ element.creationTimestamp | date: "dd/MM/y HH:mm:ss" }}
+              </p>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Creator user Column -->
+          <ng-container cdkColumnDef="creatorUser">
+            <mat-header-cell *cdkHeaderCellDef>
+              <p>{{ "msnameuppercase.CREATOR_USER" | translate }}</p>
+            </mat-header-cell>
+            <mat-cell *cdkCellDef="let element">
+              <span>{{ "msnameuppercase.CREATOR_USER" | translate }}</span>
+              <p class="text-truncate">
+                {{ element.creatorUser }}
+              </p>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Last modification timestamp Column -->
+          <ng-container cdkColumnDef="modificationTimestamp">
+            <mat-header-cell *cdkHeaderCellDef>
+              <p>{{ "msnameuppercase.LAST_MODIFICATION_TIMESTAMP" | translate }}</p>
+            </mat-header-cell>
+            <mat-cell *cdkCellDef="let element">
+              <span>{{ "msnameuppercase.LAST_MODIFICATION_TIMESTAMP" | translate }}</span>
+              <p class="text-truncate">
+                {{ element.modificationTimestamp | date: "dd/MM/y HH:mm:ss" }}
+              </p>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Modifier user Column -->
+          <ng-container cdkColumnDef="modifierUser">
+            <mat-header-cell *cdkHeaderCellDef>
+              <p>Acciones<!--{{ "msnameuppercase.MODIFIER_USER" | translate }}--></p>
+            </mat-header-cell>
+            <mat-cell *cdkCellDef="let element">
+              <span>Acciones<!--{{ "msnameuppercase.MODIFIER_USER" | translate }}--></span>
+              <p class="text-truncate">
+                <!--{{  element.modifierUser }}-->
+                <button type="button" [routerLink]="element._id" mat-button>
+                  <i class="material-icons">
+                      edit
+                  </i>
+                </button>
+
+              </p>
+            </mat-cell>
+          </ng-container>
+
+
+          <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+
+          <mat-row *cdkRowDef="let row; columns: displayedColumns" class="selectedElement">
+          </mat-row>
+        </mat-table>
+        <mat-paginator #paginator [length]="tableSize" [pageIndex]="tablePage" [pageSize]="tableCount"
+          [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
+      </div>
+      <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+  </mat-drawer-container>
+</div>

@@ -1,0 +1,89 @@
+type CommandResponse {
+  "Response code"
+  code: Int
+  "Response message"
+  message: String
+}
+
+type msnamepascalmsentitypascal {
+  "msentitypascal ID"
+  _id: ID!
+  "User general info"
+  generalInfo: msnamepascalmsentitypascalGeneralInfo
+  "msentitypascal enabled"
+  enabled: Boolean!
+  "Creation timestamp"
+  creationTimestamp: BigInt
+  "Creator user"
+  creatorUser: String
+  "Modification timestamp"
+  modificationTimestamp: BigInt
+  "Modifier user"
+  modifierUser: String
+}
+
+type msnamepascalmsentitypascalGeneralInfo {
+  "msentitypascal name"
+  name: String!,
+  "msentitypascal description"
+  description: String!
+}
+
+input msnamepascalmsentitypascalFilterInput {
+  "Name"
+  name: String
+  "enabled"
+  enabled: Boolean
+  "Creator user"
+  creatorUser: String
+  "modifier user"
+  modifierUser: String
+  "get data created after indicated timestamp"
+  creationTimestamp: BigInt
+}
+
+input msnamepascalmsentitypascalPaginationInput {
+  "Page"
+  page: Int!
+  "Count"
+  count: Int!
+  "Sort, default: ASC"
+  sort: Int
+}
+
+input msnamepascalmsentitypascalInput {
+  "msentitypascal general info"
+  generalInfo: msnamepascalmsentitypascalGeneralInfoInput!
+  "msentitypascal status"
+  enabled: Boolean!
+}
+
+input msnamepascalmsentitypascalGeneralInfoInput {
+  "msentitypascal name"
+  name: String!
+  "msentitypascal description"
+  description: String!
+}
+
+type Query {
+  "Get msentitiespascal filtered "
+  msnamepascalmsentitiespascal(filterInput: msnamepascalmsentitypascalFilterInput!, paginationInput: msnamepascalmsentitypascalPaginationInput!): [msnamepascalmsentitypascal]
+  "Get the amount of msentitiespascal filtered "
+  msnamepascalmsentitiespascalSize(filterInput: msnamepascalmsentitypascalFilterInput!): Int!
+  "Get msentitiespascal by its id"
+  msnamepascalmsentitypascal(id: String!): msnamepascalmsentitypascal
+}
+
+type Mutation {
+  "Create a new msentitypascal"
+  msnamepascalCreatemsentitypascal(input: msnamepascalmsentitypascalInput!): msnamepascalmsentitypascal
+  "Update the msentitypascal generalInfo"
+  msnamepascalUpdatemsentitypascalGeneralInfo(id:ID!, input: msnamepascalmsentitypascalGeneralInfoInput!): msnamepascalmsentitypascal
+  "Update the msentitypascal state"
+  msnamepascalUpdatemsentitypascalState(id: ID!, enabled: Boolean!): msnamepascalmsentitypascal
+}
+
+type Subscription {
+  "This events is triggered when a msentitypascal is created or updated"
+  msentitypascalUpdatedSubscription: msnamepascalmsentitypascal  
+}

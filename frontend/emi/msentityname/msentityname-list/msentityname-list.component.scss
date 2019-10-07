@@ -1,0 +1,479 @@
+@import "src/app/core/scss/fuse";
+
+// Extract the palettes you need from the theme definition.
+  
+
+.blink-button {
+  background-color:mat-color($accent);
+  animation:blink-button 2.5s linear infinite alternate 2.5s;
+}
+
+@keyframes blink-button {
+  0%,80% {
+    background-color:mat-color($accent);
+  }
+  90% {
+    background-color:mat-color($primary, A400);
+  }
+  100% {
+    background-color:mat-color($accent);
+  }
+}
+
+.page-layout.blank, .container{
+    background: white;
+    padding: 10px;
+}
+
+.container{
+    border: 1px solid silver;
+}
+
+/***********header***********/
+.sharek{
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.sidenav{
+    position: relative;
+    width: 50%;
+}
+
+.search{
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+}
+
+.search form{
+    width: 100%;
+    font-size: 13px;
+
+    &::ng-deep .mat-button-wrapper{
+        color: #039be5;
+    }
+
+    &::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline{
+        background: rgba(0, 0, 0, 0.12);
+    }
+
+    &::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple{
+        background: #039be5;
+    }
+
+    &::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label{
+        color: #ff1100;
+    }
+
+    &::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-ripple{
+        background-color: #f4433680;
+    }
+
+    &::ng-deep .mat-form-field-invalid .mat-input-element{
+        caret-color: #f4433680;
+    }
+
+    &::ng-deep .mat-form-field-flex{
+        padding-left: 5px;
+    }    
+}
+
+/*********************calendar****************/
+::ng-deep .cdk-overlay-dark-backdrop{
+    background: rgba(255, 255, 255, 0.288);
+}
+::ng-deep .mat-dialog-container{
+    border-radius: 10px !important;
+}
+::ng-deep .mat-datepicker-content .mat-calendar .mat-calendar-header{
+    background-color: #039be5;
+    color: white;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar .mat-calendar-content button{
+    color: #039be5;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar .mat-calendar-content button strong{
+    font-weight: 500;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar-body-today:not(.mat-calendar-body-selected){
+    border-color: rgba(3, 155, 229, 0.38);
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar-body-cell:hover:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-background{
+    background: rgba(3, 155, 229, 0.38);
+    border-color: rgba(3, 155, 229, 0.38);
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar-body-selected{
+    background: #039be5;
+    border-color: rgba(3, 155, 229, 0.38);
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar-footer button{
+    box-shadow: none;
+    background-color: transparent;
+    color: #039be5;
+    border: 1px solid #039be5;
+    line-height: normal;
+    padding: 10px;
+    font-size: 12px;
+    position: relative;
+    line-height: normal !important; 
+
+    transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar-footer button:active, 
+::ng-deep .mat-datepicker-content .mat-calendar-footer button:hover{
+    box-shadow: none;
+    color: white;
+    border: 1px solid #37adff;
+    background: #039be582;
+}
+
+/*************************fin modal************************/
+.search form .mat-form-field{
+    padding: 0px 10px;
+    width: 33.33%;
+    
+}
+
+.search form .mat-form-field:first-child{
+    padding-left: 0px;
+}
+
+.search form .mat-form-field:last-child{
+    padding-right: 0px;
+}
+
+.search form .mat-form-field input{
+    text-overflow: ellipsis;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  transition: background-color 5000s ease-in-out 0s;
+  text-overflow: ellipsis;
+}
+
+.filter-reset{
+    width: 100%;
+    text-align: right;
+    display: none;
+}
+
+.filter-reset button{
+    box-shadow: none;
+    background-color: transparent;
+    color: #039be5;
+    border: 1px solid #039be5;
+    line-height: normal;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.filter-reset button:active, .filter-reset button:hover{
+    box-shadow: none;
+    border: 1px solid #37adff;
+}
+
+.search-wrapper{
+    display: none;
+}
+
+.new-button button{
+    box-shadow: none;
+    background-color: transparent;
+    color: #039be5;
+    border: 1px solid #039be5;
+    line-height: normal;
+    padding: 10px;
+    font-size: 12px;
+    position: relative;
+
+    transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+}
+
+.new-button button::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    z-index: -1;
+    background: #039be582;
+
+    transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+}
+
+.new-button button:hover::after, .new-button button:active::after{
+    height: 100%;
+}
+
+.new-button button:active, .new-button button:hover{
+    box-shadow: none;
+    color: white;
+    border: 1px solid #37adff;
+}
+
+/*********fin header************/
+
+/**********content***********/
+
+/********tabla***************/
+
+.selectedElement{
+    height: auto;
+    position: relative;
+}
+
+mat-table {
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+    border: 1px solid silver;
+}
+  
+mat-table mat-header-row{
+    min-height: auto !important;
+    align-items: stretch;
+}
+  
+mat-table mat-header-row mat-header-cell{
+    white-space: normal;
+    word-wrap: break-word;
+    background: #d3d3d36b;
+    text-align: center;
+}
+  
+mat-table mat-row mat-cell{
+    white-space: normal;
+    word-wrap: break-word;
+}
+  
+mat-header-cell, mat-cell {
+    padding: .35em !important;
+}
+  
+mat-header-cell p, mat-cell p, mat-cell button, mat-cell span{
+    white-space: normal;
+    word-wrap: break-word;
+    padding: 5px 2px;
+    font-size: 13px;
+    margin: 0;
+    font-weight: normal;
+    text-align: center;
+}
+
+mat-cell button{
+    width: auto;
+    min-width: auto;
+    line-height: normal;
+}
+  
+mat-cell button i{
+    color: #039be5;
+    font-size: 20px;
+    line-height: 22px;
+
+    transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+}
+
+mat-cell button:hover i{
+    background: #039be5;
+    color: white;
+    margin: 0;
+    padding: 0;
+    border-radius: 2px;
+}
+
+mat-cell mat-icon.mat-red-500-bg{
+    border-radius: 50px;
+    background-color: #ff8880 !important;
+}
+
+mat-cell mat-icon.mat-green-600-bg{
+    border-radius: 50px;
+    background-color: #006f51 !important;
+}
+  
+::ng-deep button .mat-ripple, ::ng-deep button .mat-button-focus-overlay{
+    display: none;
+}
+  
+mat-cell p, mat-header-cell p{
+    width: 100%;
+}
+  
+mat-cell span{
+    color: rgba(0, 0, 0, 0.54);
+}
+ 
+mat-cell span{
+    display: none;
+}
+
+mat-row:nth-child(2n+1){
+    background: rgba(243, 243, 243, 0.68);
+}
+
+/************footer tabla**********/
+
+::ng-deep .mat-paginator-page-size-select {
+    &::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline{
+        background: rgba(0, 0, 0, 0.12) !important;
+    }
+
+    &::ng-deep .mat-form-field-underline .mat-form-field-ripple{
+        background: #039be5;
+    }
+
+    &::ng-deep .mat-select-arrow{
+        color: #039be5;
+    }
+}
+
+::ng-deep .mat-paginator-range-actions{
+    &::ng-deep .mat-icon-button{
+        color: #039be5;
+    }
+    &::ng-deep .mat-icon-button[disabled]{
+        color: rgba(3, 155, 229, 0.26);
+    }
+}
+
+@media (max-width: 800px){
+    .sidenav{
+        width: 60%;
+    }
+    mat-header-cell p, mat-cell p, mat-cell button, mat-cell span{
+        font-size: 11px;
+    }
+}
+  
+@media (max-width: 680px){
+    .sharek{
+        flex-wrap: wrap;
+    }
+
+    .sidenav{
+        width: 100%;
+    }
+
+    .header{
+        width: 100%;
+        text-align: right;
+        justify-content: flex-end;
+        margin-bottom: 10px;
+    }
+
+    .new-button button{
+        padding: 11px;
+    }
+
+    /********************************/
+  
+    .content-card{
+        border-radius: 10px 10px 0 0;
+    }
+      
+    mat-header-cell {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+      
+    mat-row {
+        display: grid;
+        flex-wrap: wrap;
+        width: 100%;
+        border-bottom: 2px solid #8e8e8e !important;
+        margin: 0 auto 10px;
+    }
+  
+    mat-row::after{
+        display: none
+    }
+
+    mat-row:nth-child(2n+1){
+        background: transparent;
+    }
+      
+    mat-cell {
+        display: block;
+        font-size: .8em;
+        text-align: right;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+  
+    mat-row mat-cell:nth-child(2n+1){
+        background: rgba(243, 243, 243, 0.86);
+    }
+  
+    mat-cell p, mat-cell button{
+        width: 50%;
+        padding: 0;
+        text-align: right;
+    }
+  
+    mat-cell span{
+        text-align: left;
+        width: 50%;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.54);
+        margin: 0;
+        padding: 0;
+        position: relative;
+        display: inline-block;
+    }
+  
+    mat-cell:last-child span{
+        width: 70%;
+    }
+  
+}
+
+@media (max-width: 425px){
+    .search form .mat-form-field{
+        width: 50%;
+    }
+
+    .search form .mat-form-field:last-child{
+        padding: 0;
+    }
+}

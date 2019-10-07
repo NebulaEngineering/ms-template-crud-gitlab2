@@ -1,0 +1,90 @@
+<div class="page-layout blank" fusePerfectScrollbar>
+
+  <div class="to-return">
+    <button [routerLink]="['../']">
+      <i class="material-icons">chevron_left </i>
+      <p>Regresar a Unidades</p>
+    </button>
+  </div>
+
+  <form class="details" name="msentitycamelGeneralInfoForm" [formGroup]="msentitycamelGeneralInfoForm">
+
+    <!--<div>
+        <div class="h2">{{'msnameuppercase.DETAILS.GENERAL_INFO' | translate}}</div>
+      </div>-->
+
+    <mat-form-field *ngIf="msentitycamel && msentitycamel.creatorUser">
+      <input matInput name="idSystem" formControlName="idSystem" [(ngModel)]="msentitycamel._id"
+        placeholder="{{'msnameuppercase.DETAILS.ID_SYSTEM' | translate}}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="name" formControlName="name" maxlength="40"
+        placeholder="{{'msnameuppercase.DETAILS.NAME' | translate}}">
+      <mat-error *ngIf="msentitycamelGeneralInfoForm.hasError('required', ['name'])">
+        {{'msnameuppercase.NAME_REQUIRED' | translate}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="description" formControlName="description" maxlength="60"
+        placeholder="{{'msnameuppercase.DETAILS.DESCRIPTION' | translate}}">
+      <mat-error *ngIf="msentitycamelGeneralInfoForm.hasError('required', ['description'])">
+        {{'msnameuppercase.DESCRIPTION_REQUIRED' | translate}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-divider *ngIf="msentitycamel && msentitycamel.creatorUser"></mat-divider>
+
+    <!-- CREATED BY -->
+    <mat-form-field *ngIf="msentitycamel && msentitycamel.creatorUser">
+      <input matInput readonly placeholder="{{'msnameuppercase.DETAILS.CREATED_BY' | translate}}"
+        value="{{ msentitycamel.creatorUser }}">
+    </mat-form-field>
+    <!-- CREATED BY -->
+
+    <!-- CREATED IN -->
+    <mat-form-field *ngIf="msentitycamel  && msentitycamel.creationTimestamp">
+      <input matInput readonly placeholder="{{'msnameuppercase.DETAILS.CREATED_IN' | translate}}"
+        value="{{ msentitycamel.creationTimestamp | date: 'dd/MM/y HH:mm:ss' }}">
+    </mat-form-field>
+    <!-- CREATED IN -->
+
+    <!-- EDITED BY -->
+    <mat-form-field *ngIf="msentitycamel && msentitycamel.modifierUser">
+      <input matInput readonly placeholder="{{'msnameuppercase.DETAILS.EDITED_BY' | translate}}"
+        value="{{ msentitycamel.modifierUser }}">
+    </mat-form-field>
+    <!-- EDITED BY -->
+
+    <!-- EDITED IN -->
+    <mat-form-field *ngIf="msentitycamel && msentitycamel.modificationTimestamp">
+      <input matInput readonly placeholder="{{'msnameuppercase.DETAILS.EDITED_IN' | translate}}"
+        value="{{ msentitycamel.modificationTimestamp | date: 'dd/MM/y HH:mm:ss' }}">
+    </mat-form-field>
+    <!-- EDITED IN -->
+    
+    <div class="enabled">
+      <form *ngIf="msentitycamelActiveForm" name="msentitycamelActiveForm" [formGroup]="msentitycamelActiveForm">
+        <mat-slide-toggle formControlName="enabled" color="accent" (change)="onmsentitypascalStateChange($event)">
+          <label
+            *ngIf="msentitycamelActiveForm.controls['enabled'].value">{{'msnameuppercase.DETAILS.ENABLED' | translate}}</label>
+          <label 
+            *ngIf="!msentitycamelActiveForm.controls['enabled'].value">{{'msnameuppercase.DETAILS.DISABLED' | translate}}</label>
+        </mat-slide-toggle>
+      </form>
+    </div>
+
+    <div class="button-form">
+      <button mat-raised-button *ngIf="pageType === 'new'" (click)="createmsentitypascal()"
+        [disabled]="msentitycamelGeneralInfoForm.invalid || msentitycamelGeneralInfoForm.pristine">
+        {{'msnameuppercase.CREATE' | translate}}
+      </button>
+      <button mat-raised-button *ngIf="pageType === 'edit'" (click)="updatemsentitypascalGeneralInfo()"
+        [disabled]="msentitycamelGeneralInfoForm.invalid || msentitycamelGeneralInfoForm.pristine">
+        {{'msnameuppercase.UPDATE' | translate}}
+      </button>
+    </div>
+  </form>
+
+</div>

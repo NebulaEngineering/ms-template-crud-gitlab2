@@ -1,0 +1,25 @@
+<div class="page-layout blank" fusePerfectScrollbar>
+
+  <!-- CENTER -->
+    <div class="center">
+      <!-- CONTENT CARD -->
+      <div class="content-card mat-white-bg">
+        <div class="content">
+            <mat-tab-group>
+
+              <mat-tab label="{{'msnameuppercase.DETAILS.TABS.GENERAL_INFO' | translate}}">
+                <msentityname-general-info [pageType]="pageType" [msentitycamel]="msentitycamel" *ngIf="pageType">
+                </msentityname-general-info>
+              </mat-tab>
+
+            </mat-tab-group>
+         </div>
+
+        <!-- / CONTENT -->
+
+      </div>
+      <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+  </div>

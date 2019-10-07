@@ -1,0 +1,85 @@
+@import "src/app/core/scss/fuse";
+
+.page-layout.blank{
+    background: white;
+    padding: 10px;
+}
+
+::ng-deep msentityname-general-info{
+    padding: 10px;
+    border: 1px solid silver;
+    display: block;
+    margin-top: -1px;
+}
+
+::ng-deep.mat-tab-label-container {
+    border-radius: 10px 10px 0 0;
+
+    &::ng-deep .mat-tab-label{
+        border: 1px solid silver;
+        border-radius: 10px 10px 0 0;
+        background: #d3d3d36b;
+    }
+
+    &::ng-deep .mat-tab-label.mat-tab-label-active{
+        background: white;
+        color: #039be5;
+    }
+
+    &::ng-deep .mat-ink-bar{
+        background-color: #039be5 !important;
+    }
+}
+
+/***************************fin calendar***********************/
+
+::ng-deep .cdk-overlay-dark-backdrop{
+    background: rgba(255, 255, 255, 0.288);
+}
+
+::ng-deep .mat-dialog-container{
+    border-radius: 10px !important;
+}
+
+::ng-deep .mat-dialog-container .mat-dialog-title{
+    color: #696363;
+    border-bottom: 1px solid #039be5;
+    text-align: center;
+    margin: 0;
+}
+
+::ng-deep .mat-dialog-container .mat-dialog-content p{
+    color: #696363;
+}
+
+::ng-deep .mat-dialog-container .mat-dialog-actions{
+    padding: 0px 0 12px;
+    margin-bottom: -15px;
+    justify-content: center;
+}
+
+::ng-deep .mat-dialog-container .mat-dialog-actions button{
+    box-shadow: none;
+    background-color: transparent;
+    color: #039be5;
+    border: 1px solid #039be5;
+    line-height: normal;
+    padding: 10px;
+    font-size: 12px;
+    position: relative;
+
+    transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+}
+
+::ng-deep .mat-dialog-container .mat-dialog-actions button:active, 
+::ng-deep .mat-dialog-container .mat-dialog-actions button:hover{
+    box-shadow: none !important;
+    color: white;
+    border: 1px solid #37adff;
+    background-color: #039be582;
+}
+
+/*************************modal*********************/
